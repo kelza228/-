@@ -1,0 +1,19 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // или "mysql", "sqlite", "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+// Добавьте ваши модели (например для билетов)
+model Ticket {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  price       Float
+  eventDate   DateTime?
+  createdAt   DateTime @default(now())
+}
